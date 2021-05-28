@@ -2,7 +2,7 @@ import React from "react";
 import TableRow from "../TableRow/TableRow";
 import classes from "./Table.module.css";
 
-const Table = ({ goods,onEdit, onDelete, onWiew }) => {
+const Table = ({ goods,onEdit, onDelete, onView }) => {
   return (
     <div className={classes.container}>
       <table className={classes.table}>
@@ -15,7 +15,7 @@ const Table = ({ goods,onEdit, onDelete, onWiew }) => {
           </tr>
         </thead>
         <tbody>
-            {goods.map((good,index)=>(<TableRow key={index} good={good} onEdit={onEdit} index={index} onDelete={onDelete} onWiew={onWiew} />))}
+            {goods.map((good,index)=>(<TableRow key={index} good={good} onEdit={onEdit} index={index} onDelete={onDelete} onView={onView} />))}
         </tbody>
       </table>
     </div>

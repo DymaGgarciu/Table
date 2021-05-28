@@ -7,28 +7,13 @@ const GoodsTable = () => {
   const [goods, setGoods] = useState([]);
   const [showPopup, setShowPopup] = useState({ visiblePopup: false });
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        body: JSON.stringify(goods),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-  }, [goods]);
-
   const handleGoodsSubmit = (good) => {
-    fetch('https://jsonplaceholder.typicode.com/posts/100')
-  .then((response) => response.json())
-  .then((json) => console.log(json));
     setGoods([...goods, good]);
   };
 
   const handleEdit = (index, good) => {
     let newGoods = goods.filter((el, idx) => index !== idx);
-
+    
     newGoods.push(good);
     setGoods(newGoods);
   };
@@ -39,7 +24,7 @@ const GoodsTable = () => {
     setGoods(deleteGoods);
   };
 
-  const handleWiew = (index) => {
+  const handleView = (index) => {
     const currentGood = goods.find((el, idx) => index === idx);
 
     handleClosePopup(currentGood);
@@ -59,7 +44,7 @@ const GoodsTable = () => {
         goods={goods}
         onEdit={handleEdit}
         onDelete={handleDelete}
-        onWiew={handleWiew}
+        onView={handleView}
       />
       {showPopup.visiblePopup && (
         <PopupGoodInfo showPopup={showPopup} onClosePopup={handleClosePopup} />

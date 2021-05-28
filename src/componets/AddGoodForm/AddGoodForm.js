@@ -3,22 +3,20 @@ import { Input } from "./../../elements/Input/Input";
 import Button from "./../../elements/Button/Button";
 import classes from "./AddGoodForm.module.css";
 
+const initialGood = {
+  title: "",
+  author: "",
+  price: "",
+};
+
 const AddGoodFrom = (props) => {
   const { onSubmit } = props;
-  const [good, setGoodsValue] = useState({
-    title: "",
-    author: "",
-    price: "",
-  });
+  const [good, setGoodsValue] = useState(initialGood);
 
   const handleFormSubmit = (event) => {
-    event.preventDefault("");
+    event.preventDefault();
     onSubmit(good);
-    setGoodsValue({
-      title: "",
-      author: "",
-      price: "",
-    });
+    setGoodsValue(initialGood);
   };
   const handleInputChange = (name, value) => {
     setGoodsValue({ ...good, [name]: value });
