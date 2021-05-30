@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./PopupGoodInfo.module.css";
 
 const PopupGoodInfo = ({ showPopup, onClosePopup }) => {
-
   return (
     <div>
       <div

@@ -21,12 +21,18 @@ const AddGoodFrom = (props) => {
   const handleInputChange = (name, value) => {
     setGoodsValue({ ...good, [name]: value });
   };
+
+  const enabled =
+    good.title.length > 0 && good.author.length > 0 && good.price.length > 0;
+
   return (
     <form onSubmit={handleFormSubmit}>
       <Input onChange={handleInputChange} name={"title"} value={good.title} />
       <Input onChange={handleInputChange} name={"author"} value={good.author} />
       <Input onChange={handleInputChange} name={"price"} value={good.price} />
-      <Button type="submit"> Add </Button>
+      <Button type="submit" disabled={!enabled}>
+        Add
+      </Button>
     </form>
   );
 };

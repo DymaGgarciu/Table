@@ -1,13 +1,14 @@
-import './App.css';
-import  GoodsTable from './componets/GoodsTable/GoodsTable'
+import { BrowserRouter, Route } from "react-router-dom";
+import GoodsTable from "./componets/GoodsTable/GoodsTable";
+import "./App.css";
 
-
-
-function App () {
+function App() {
   return (
-    <div className="App">
-      <GoodsTable/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Route path="/" component={GoodsTable} />
+      </div>
+    </BrowserRouter>
   );
 }
 

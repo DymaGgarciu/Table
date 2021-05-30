@@ -2,7 +2,6 @@ import React from "react";
 import Button from "./../../elements/Button/Button";
 import { useState } from "react";
 import { Input } from "./../../elements/Input/Input";
-import classes from "./TableRow.module.css";
 
 const TableRow = ({ good, onEdit, index, onDelete, onView }) => {
   const [isEdit, setIsEdit] = useState(false);
