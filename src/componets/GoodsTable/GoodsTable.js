@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 import AddGoodFrom from "./../AddGoodForm/AddGoodForm";
 import Table from "./../Table/Table";
 import PopupGoodInfo from "./../PopupGoodInfo/PopupGoodInfo";
 
 const GoodsTable = (props) => {
+  let history = useHistory();
   const [goods, setGoods] = useState([]);
   const [showPopup, setShowPopup] = useState({ visiblePopup: false });
 
@@ -29,9 +30,11 @@ const GoodsTable = (props) => {
   const handleView = (index) => {
     const currentGood = goods.find((el, idx) => index === idx);
 
-    props.history.push(`/good/id=${index}`);
-
-    handleClosePopup(currentGood);
+    history.push(`/good/id=${index}`);
+    setShowPopup({
+      ...(currentGood ? currentGood : showPopup),
+      visiblePopup: !showPopup.visiblePopup,
+    });
   };
 
   const handleClosePopup = (currentGood) => {
@@ -39,6 +42,7 @@ const GoodsTable = (props) => {
       ...(currentGood ? currentGood : showPopup),
       visiblePopup: !showPopup.visiblePopup,
     });
+    history.push("/");
   };
 
   return (
